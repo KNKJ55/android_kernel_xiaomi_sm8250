@@ -43,7 +43,7 @@ jobs:
 
       - name: Get Kernel source
         run: |
-          git clone https://github.com/$GITHUB_REPOSITORY/ --depth 1 $GITHUB_WORKSPACE/workdir/source
+          git clone https://github.com/$GITHUB_REPOSITORY/ --depth 1 -b ${{ steps.branch-names.outputs.current_branch }} $GITHUB_WORKSPACE/workdir/source
           
       - name: Integrate KernelSU
         run: |
@@ -76,9 +76,7 @@ jobs:
         run: |
           git clone https://github.com/madmax7896/AnyKernel3 -b alioth --depth 1 $GITHUB_WORKSPACE/workdir/ak3
           rm -r $GITHUB_WORKSPACE/workdir/ak3/.git
-          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/Image $GITHUB_WORKSPACE/workdir/ak3/
-          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtb $GITHUB_WORKSPACE/workdir/ak3/
-          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtbo.img $GITHUB_WORKSPACE/workdir/ak3/
+          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/Image.gz-dtb $GITHUB_WORKSPACE/workdir/ak3/
           
       - name: Upload Kernel Package
         uses: actions/upload-artifact@v4
