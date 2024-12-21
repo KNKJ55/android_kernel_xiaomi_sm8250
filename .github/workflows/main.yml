@@ -49,7 +49,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/workdir/source
           rm -rf KernelSU
-          curl -LSs "https://raw.githubusercontent.com/KNKJ55/KernelSU_For_Linux4.9/non-gki/kernel/setup.sh" | bash -s
+          curl -LSs "https://raw.githubusercontent.com/KNKJ55/KernelSU_For_Linux4.9/non-gki-susfs/kernel/setup.sh" | bash -s
           sed -i -e '$a\'$'\n''CONFIG_KSU=y' arch/arm64/configs/alioth_defconfig
 
           
