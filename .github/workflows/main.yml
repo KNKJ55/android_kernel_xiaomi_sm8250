@@ -72,15 +72,15 @@ jobs:
 
       - name: Pack Kernel
         run: |
-          git clone https://github.com/madmax7896/AnyKernel3 -b alioth --depth 1 $GITHUB_WORKSPACE/workdir/ak3
-          rm -r $GITHUB_WORKSPACE/workdir/ak3/.git
+          git clone https://github.com/$GITHUB_REPOSITORY/ -b master --depth 1 $GITHUB_WORKSPACE/workdir/master
           find $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dts/vendor/qcom/ -name '*.dtb' -exec cat {} + >$GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtb
-          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/Image $GITHUB_WORKSPACE/workdir/ak3/
-          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtb $GITHUB_WORKSPACE/workdir/ak3/
-          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtbo.img $GITHUB_WORKSPACE/workdir/ak3/
+          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/Image $GITHUB_WORKSPACE/workdir/master/Package/
+          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtb $GITHUB_WORKSPACE/workdir/master/Package/
+          cp $GITHUB_WORKSPACE/workdir/source/out/arch/arm64/boot/dtbo.img $GITHUB_WORKSPACE/workdir/master/Package/
           
       - name: Upload Kernel Package
         uses: actions/upload-artifact@v4
         with:
-          name: Kernel_AK3_${{ env.BUILD_TIME }}
-          path: workdir/ak3/*
+          name: Kernel_AK3&APM_${{ env.BUILD_TIME }}
+          path: workdir/master/Package/*
+          
