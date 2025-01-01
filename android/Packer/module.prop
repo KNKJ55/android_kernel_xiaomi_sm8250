@@ -1,0 +1,6 @@
+id=kernel_installer
+name=Kernel Installer
+version=v1.0
+versionCode=1
+author=科家
+description=安装内核生成的冗余模块，请卸载
