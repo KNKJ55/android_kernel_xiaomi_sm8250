@@ -49,7 +49,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/workdir/source
           rm -rf KernelSU
-          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/magic/kernel/setup.sh" | bash -s magic
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next
           
       - name: Build Kernel
         run: |
