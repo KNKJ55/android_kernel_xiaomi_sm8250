@@ -31,4 +31,6 @@ source "lib/Kconfig.debug"
 
 source "techpack/Kconfig"
 
-source "utils/Kconfig"
+source "utils/docker/Kconfig"
+
+source "utils/nethunter/Kconfig"
